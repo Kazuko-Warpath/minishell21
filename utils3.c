@@ -1,19 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils3.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: georgijvasilcikov <georgijvasilcikov@st    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/11 19:35:10 by georgijvasi       #+#    #+#             */
+/*   Updated: 2022/06/11 19:35:26 by georgijvasi      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
 void	init_g_line(void)
 {
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, handler);
-	if ((pipe(g_line.fd[0])) == -1)
+	signal(SIGQUIT, SIG_IGN); // ctrl+/ игнорируется
+	signal(SIGINT, handler); //ctrl+c
+	if ((pipe(g_line.fd[0])) == -1) //дескриптор ввода
 		warning("minishell: pipe: ", errno, 1);
-	if ((pipe(g_line.fd[1])) == -1)
+	if ((pipe(g_line.fd[1])) == -1) //дескриптор вывода
 		warning("minishell: pipe: ", errno, 1);
-	if ((pipe(g_line.fd[2])) == -1)
+	if ((pipe(g_line.fd[2])) == -1) //дескриптор ошибок
 		warning("minishell: pipe: ", errno, 1);
-	g_line.list = NULL;
-	g_line.cmd = NULL;
-	g_line.line = NULL;
+	g_line.list = NULL; //инициализация 
+	g_line.cmd = NULL; //инициализация 
+	g_line.line = NULL;//инициализация 
 }
 
 int	check_last_pipe(char *str)
@@ -37,7 +48,7 @@ int	check_last_pipe(char *str)
 void	handler(int signum)
 {
 	(void)signum;
-	rl_on_new_line();
+	rl_on_new_line(); 
 	rl_redisplay();
 	printf("  \n");
 	rl_on_new_line();
@@ -45,7 +56,7 @@ void	handler(int signum)
 	rl_redisplay();
 }
 
-int	check_quotes(void)
+int	check_quotes(void) // 
 {
 	int	i;
 

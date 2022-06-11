@@ -1,16 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: georgijvasilcikov <georgijvasilcikov@st    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/11 19:34:14 by georgijvasi       #+#    #+#             */
+/*   Updated: 2022/06/11 19:35:26 by georgijvasi      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
 int	check_quots_pipe(void)
 {
-	if (!check_quotes())
+	if (!check_quotes()) //скипаем "'"(не закрытая кавычка) если в строке ничего не остается возвращаем 0
 	{
 		errmsg("minishell: ", g_line.line, ": unclosed quotes", -21);
-		add_history(g_line.line);
+		add_history(g_line.line); //записываем в историю
 		free(g_line.line);
 		return (1);
 	}
-	if (!check_first_pipe())
+	if (!check_first_pipe()) // проверяем если запись команды начинается "|"
 	{
 		errmsg("minishell: syntax error near unexpected token `|'",
 			NULL, NULL, -258);
@@ -64,8 +75,8 @@ void	minishell(void)
 {
 	while (1)
 	{
-		init_g_line();
-		g_line.line = readline("minishell > ");
+		init_g_line(); //инициализация
+		g_line.line = readline("minishell > "); //записываем в line текст
 		if (!g_line.line)
 		{
 			printf("\033[Aminishell > exit\n");
@@ -74,7 +85,7 @@ void	minishell(void)
 		else if (*g_line.line && ft_strlen(g_line.line))
 		{
 			if (check_quots_pipe())
-				continue ;
+				continue ; //идем в начало цикла
 			prompt_pipe();
 			prepare();
 			signal(SIGINT, handler_inside);
