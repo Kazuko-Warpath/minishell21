@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kwarpath <kwarpath@student.42.fr>          +#+  +:+       +#+        */
+/*   By: georgijvasilcikov <georgijvasilcikov@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 14:48:43 by kwarpath          #+#    #+#             */
-/*   Updated: 2021/10/18 15:03:29 by kwarpath         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:00:34 by georgijvasi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*back;
-
-	if (lst)
-	{
-		if (*lst)
-		{
-			back = ft_lstlast(*lst);
-			back->next = new;
-		}
-		else
-			*lst = new;
-	}
+	if (!new)
+		return ;
+	if (!*lst)
+		(*lst) = new;
+	else
+		ft_lstlast(*lst)->next = new;
 }

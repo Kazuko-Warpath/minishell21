@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kwarpath <kwarpath@student.42.fr>          +#+  +:+       +#+        */
+/*   By: georgijvasilcikov <georgijvasilcikov@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 15:39:34 by kwarpath          #+#    #+#             */
-/*   Updated: 2021/10/18 14:27:44 by kwarpath         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:04:19 by georgijvasi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*newlst;
+	t_list	*res;
 
-	newlst = (t_list *)malloc(sizeof(newlst));
-	if (!newlst)
-		return (NULL);
-	newlst->content = content;
-	newlst->next = NULL;
-	return (newlst);
+	if (!content)
+		return (0);
+	res = malloc(sizeof(*res));
+	if (!res)
+		return (0);
+	res->content = content;
+	res->next = NULL;
+	return (res);
 }
+

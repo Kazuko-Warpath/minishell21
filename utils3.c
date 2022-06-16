@@ -6,7 +6,7 @@
 /*   By: georgijvasilcikov <georgijvasilcikov@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:35:10 by georgijvasi       #+#    #+#             */
-/*   Updated: 2022/06/11 19:35:26 by georgijvasi      ###   ########.fr       */
+/*   Updated: 2022/06/11 22:01:58 by georgijvasi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_g_line(void)
 	g_line.line = NULL;//инициализация 
 }
 
-int	check_last_pipe(char *str)
+int	check_last_pipe(char *str) // определяем 
 {
 	int	i;
 	int	pipe;
@@ -45,7 +45,7 @@ int	check_last_pipe(char *str)
 	return (pipe);
 }
 
-void	handler(int signum)
+void	handler(int signum)// переносим на новою строку при прерывании действия
 {
 	(void)signum;
 	rl_on_new_line(); 
@@ -56,7 +56,7 @@ void	handler(int signum)
 	rl_redisplay();
 }
 
-int	check_quotes(void) // 
+int	check_quotes(void) // скипаем "\" and " " " 
 {
 	int	i;
 
@@ -84,7 +84,7 @@ int	check_quotes(void) //
 	return (1);
 }
 
-int	check_first_pipe(void)
+int	check_first_pipe(void) // начало записи проверяем "|"
 {
 	int	i;
 

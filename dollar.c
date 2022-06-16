@@ -93,7 +93,7 @@ void	find_name(int *i, char **envp)
 	replace_var((*i) - count - 1, count + 1, name, i);
 }
 
-void	dollar(void)
+void	dollar(void) 
 {
 	int		i;
 	int		q;

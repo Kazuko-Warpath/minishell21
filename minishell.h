@@ -6,7 +6,7 @@
 /*   By: georgijvasilcikov <georgijvasilcikov@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:35:38 by georgijvasi       #+#    #+#             */
-/*   Updated: 2022/06/11 19:35:39 by georgijvasi      ###   ########.fr       */
+/*   Updated: 2022/06/16 14:06:26 by georgijvasi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void	ft_dictadd_back(t_dict **lst, t_dict *new);
 void	ft_free_dict(t_dict *dict);
 
 // list functions
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+//t_list	*ft_lstnew(void *content);
+//void	ft_lstadd_back(t_list **lst, t_list *new);
 
 // error management
 void	warning(char *msg, int code, int errstd);

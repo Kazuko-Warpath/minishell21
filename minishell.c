@@ -6,7 +6,7 @@
 /*   By: georgijvasilcikov <georgijvasilcikov@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:34:14 by georgijvasi       #+#    #+#             */
-/*   Updated: 2022/06/11 19:35:26 by georgijvasi      ###   ########.fr       */
+/*   Updated: 2022/06/12 17:52:22 by georgijvasi      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	prompt_pipe(void)
 	char	*tmpline;
 	char	*tmpread;
 
-	while (check_last_pipe(g_line.line))
+	while (check_last_pipe(g_line.line))// обработаем запись (пример "echo 1 |"
 	{
 		tmpline = ft_strdup(g_line.line);
 		free(g_line.line);
@@ -59,7 +59,7 @@ void	prepare(void)
 {	
 	t_list	*tmp;
 
-	add_history(g_line.line);
+	add_history(g_line.line);// добавляем в историю строку
 	dollar();
 	parser();
 	tmp = g_line.list;

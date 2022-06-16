@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-char	**get_paths(char **envp)
+char	**get_paths(char **envp) //обработка стандартных команд(bin)
 {
 	char	**paths;
 	char	*tmp;
@@ -21,7 +21,7 @@ char	**get_paths(char **envp)
 	i = 0;
 	while (*envp)
 	{
-		if (!ft_strncmp(*envp, "PATH=", 5))
+		if (!ft_strncmp(*envp, "PATH=", 5)) // находим часть в окружении с путями
 		{
 			paths = ft_split(*envp + 5, ':');
 			while (paths[i])
@@ -63,7 +63,7 @@ char	*find_cmd(char **paths, char **cmd_flags)
 	return (NULL);
 }
 
-int	exec_built(t_cmd *cmd)
+int	exec_built(t_cmd *cmd) // обработка встроенных команд
 {
 	int	i;
 
@@ -87,7 +87,7 @@ int	exec_built(t_cmd *cmd)
 	return (i);
 }
 
-void	execute(t_cmd *cmd)
+void	execute(t_cmd *cmd) //запуск команды на исполнение
 {
 	char	**paths;
 	char	*name;
@@ -95,7 +95,7 @@ void	execute(t_cmd *cmd)
 
 	if (exec_built(cmd))
 		return ;
-	p = fork();
+	p = fork(); //создаем дочерний процесс, т.к. execve после выполнения закрывает процесс
 	if (!p)
 	{
 		paths = get_paths(g_line.envp);
